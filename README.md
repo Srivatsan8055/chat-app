@@ -40,7 +40,7 @@ lib/
 </pre>
 #### Run Locally
 <pre>
-1.git clone https://github.com/<your-username>/flutter-chat-app.git
+1.git clone https://github.com/<Srivatsan8055>/chat-app.git
 2.cd flutter-chat-app
 3.flutter pub get
 4.flutterfire configure  # If not already done
@@ -51,4 +51,17 @@ lib/
 <pre>
 Frontend : Flutter (Dart)
 Backend : Firebase (Auth, Firestore)
+</pre>
+
+## Firestore Database Security
+Go to Firestore → Database → Rules and restict access to firestore.
+<pre>
+        rules_version = '2';
+        service cloud.firestore {
+          match /databases/{database}/documents {
+            match /{document=**} {
+              allow read, write: if request.auth != null;
+            }
+          }
+        }
 </pre>
